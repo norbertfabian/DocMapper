@@ -41,15 +41,17 @@
             <div class="navbar-header">
                 <a class="navbar-brand" href="${pageContext.request.contextPath}"/>
                 <a class="navbar-brand" href="${pageContext.request.contextPath}">DocMapper</a>
+                <p></p>
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav nav navbar-right">
+                    Created by Norbert Fabian in 2016
+                </ul>
             </div>
         </div>
     </nav>
 
     <jsp:invoke fragment="content" />
-
-    <footer>
-        <p>Created by Norbert Fabian in 2016</p>
-    </footer>
 
 </div> <!-- /container -->
 
