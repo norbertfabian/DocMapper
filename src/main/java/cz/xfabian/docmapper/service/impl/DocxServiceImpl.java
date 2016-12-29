@@ -1,5 +1,6 @@
 package cz.xfabian.docmapper.service.impl;
 
+import cz.xfabian.docmapper.enums.FilePathEnums;
 import cz.xfabian.docmapper.service.DocxService;
 import org.springframework.stereotype.Service;
 import pl.jsolve.templ4docx.core.Docx;
@@ -25,7 +26,7 @@ public class DocxServiceImpl implements DocxService{
         docx.setVariablePattern(new VariablePattern(PREFIX, SUFFIX));
         Variables variables = convertToDocxVariables(variablesMap);
         docx.fillTemplate(variables);
-        docx.save(output);
+        docx.save(FilePathEnums.OUTPUT_DOCX + output + ".docx");
     }
 
     /**

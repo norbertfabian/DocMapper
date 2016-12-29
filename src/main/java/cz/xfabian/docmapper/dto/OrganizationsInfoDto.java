@@ -11,6 +11,7 @@ public class OrganizationsInfoDto {
     private String projectTitle;
     private String projectAcronym;
     private String template;
+    private boolean generatePdf;
 
     public List<String> getPics() {
         return pics;
@@ -42,5 +43,13 @@ public class OrganizationsInfoDto {
 
     public void setProjectAcronym(String projectAcronym) {
         this.projectAcronym = projectAcronym;
+    }
+
+    public boolean getGeneratePdf() {
+        return generatePdf;
+    }
+
+    public void setGeneratePdf(boolean generatePdf) {
+        this.generatePdf = generatePdf;
     }
 }

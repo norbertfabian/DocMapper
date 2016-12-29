@@ -5,10 +5,7 @@ import cz.xfabian.docmapper.entity.Partner;
 import cz.xfabian.docmapper.enums.FilePathEnums;
 import cz.xfabian.docmapper.enums.VariableEnums;
 import cz.xfabian.docmapper.facade.DocxFillerFacade;
-import cz.xfabian.docmapper.service.DocxService;
-import cz.xfabian.docmapper.service.FileService;
-import cz.xfabian.docmapper.service.MappingService;
-import cz.xfabian.docmapper.service.XlsxService;
+import cz.xfabian.docmapper.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -36,6 +33,9 @@ public class DocxFillerFacadeImpl implements DocxFillerFacade {
     @Autowired
     private FileService fileService;
 
+    @Autowired
+    private PdfService pdfService;
+
     @Override
     public void FillData(OrganizationsInfoDto values) throws IOException {
         List<Partner> partners = new ArrayList();
@@ -48,8 +48,12 @@ public class DocxFillerFacadeImpl implements DocxFillerFacade {
         List<Map<String, String>> variables = mappingService.partnersToMaps(partners);
         variables = joinProjectName(variables, values.getProjectTitle());
         for(int order = 0; order < variables.size(); order++) {
+            String outputFile = createOutputName(order + 1, values, variables.get(order));
             docxService.fillTemplate(FilePathEnums.TEMPLATES_DIR + "/" + values.getTemplate(),
-                    createOutputName(order + 1, values, variables.get(order)), variables.get(order));
+                    outputFile, variables.get(order));
+            if(values.getGeneratePdf()) {
+                pdfService.docxToPdf(outputFile);
+            }
         }
     }
 
@@ -66,8 +70,8 @@ public class DocxFillerFacadeImpl implements DocxFillerFacade {
     }
 
     private String createOutputName(int order, OrganizationsInfoDto dto, Map<String, String> vars) {
-        return FilePathEnums.OUTPUT_DIR + dto.getProjectAcronym() + "_" + String.format("%02d", order) + "_"
+        return dto.getProjectAcronym() + "_" + String.format("%02d", order) + "_"
                 + vars.get(VariableEnums.PARTNER_COUNTRY) + "_"
-                + vars.get(VariableEnums.PARTNER_ORGANISATION_NAME) + ".docx";
+                + vars.get(VariableEnums.PARTNER_ORGANISATION_NAME);
     }
 }
