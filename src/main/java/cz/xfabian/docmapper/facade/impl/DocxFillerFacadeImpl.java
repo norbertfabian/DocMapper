@@ -10,7 +10,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -46,7 +48,7 @@ public class DocxFillerFacadeImpl implements DocxFillerFacade {
         }
 
         List<Map<String, String>> variables = mappingService.partnersToMaps(partners);
-        variables = joinProjectName(variables, values.getProjectTitle());
+        variables = joinProjectName(variables, values.getProjectTitle(), values.getSignatureDate());
         for(int order = 0; order < variables.size(); order++) {
             String outputFile = createOutputName(order + 1, values, variables.get(order));
             docxService.fillTemplate(FilePathEnums.TEMPLATES_DIR + "/" + values.getTemplate(),
@@ -62,9 +64,12 @@ public class DocxFillerFacadeImpl implements DocxFillerFacade {
         return fileService.listAllFiles(FilePathEnums.TEMPLATES_DIR);
     }
 
-    private List<Map<String, String>> joinProjectName(List<Map<String, String>> variablesList, String projectName) {
+    private List<Map<String, String>> joinProjectName(List<Map<String, String>> variablesList,
+                                                      String projectName, String signatureDate) {
         for(Map<String, String> vars: variablesList) {
             vars.put(VariableEnums.PROJECT_TITLE, projectName);
+            String signDate = signatureDate.isEmpty() ? getFormattedCurrentDate() : signatureDate;
+            vars.put(VariableEnums.SIGNATURE_DATE, signDate);
         }
         return variablesList;
     }
@@ -73,5 +78,11 @@ public class DocxFillerFacadeImpl implements DocxFillerFacade {
         return dto.getProjectAcronym() + "_" + String.format("%02d", order) + "_"
                 + vars.get(VariableEnums.PARTNER_COUNTRY) + "_"
                 + vars.get(VariableEnums.PARTNER_ORGANISATION_NAME);
+    }
+
+    private String getFormattedCurrentDate() {
+        SimpleDateFormat sdfDate = new SimpleDateFormat("dd.MM.yyyy");
+        Date now = new Date();
+        return sdfDate.format(now);
     }
 }

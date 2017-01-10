@@ -10,6 +10,7 @@ public class OrganizationsInfoDto {
     private List<String> pics;
     private String projectTitle;
     private String projectAcronym;
+    private String signatureDate;
     private String template;
     private boolean generatePdf;
 
@@ -51,5 +52,17 @@ public class OrganizationsInfoDto {
 
     public void setGeneratePdf(boolean generatePdf) {
         this.generatePdf = generatePdf;
+    }
+
+    public String getSignatureDate() {
+        return signatureDate;
+    }
+
+    public void setSignatureDate(String signatureDate) {
+        this.signatureDate = signatureDate;
+    }
+
+    public boolean isGeneratePdf() {
+        return generatePdf;
     }
 }

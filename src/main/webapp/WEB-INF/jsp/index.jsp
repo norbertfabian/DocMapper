@@ -38,6 +38,18 @@
                     </td>
                 </tr>
                 <tr>
+                <tr>
+                    <td>Signature date:</td>
+                    <td>
+                        <div>
+                            <form:label path="signatureDate" cssClass="col-xs-6 control-label"/>
+                            <form:input path="signatureDate" cssClass="form-control"/>
+                            <form:errors path="signatureDate" cssClass="help-block"/>
+                        </div>
+                        <i>Write as text. Use the format you want to have in your document. <br/>
+                            Live blank if you want to use the current date in dd.mm.yyyy format.</i>
+                    </td>
+                </tr>
                     <td>Template:</td>
                     <td>
                         <div>

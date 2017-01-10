@@ -26,4 +26,5 @@ public class VariableEnums {
     public static final String PARTNER_ZIP = "partner_zip";
     public static final String PARTNER_CITY = "partner_city";
     public static final String PARTNER_VAT = "partner_vat";
+    public static final String SIGNATURE_DATE = "signature_date";
 }
