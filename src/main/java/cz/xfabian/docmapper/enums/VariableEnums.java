@@ -17,7 +17,7 @@ public class VariableEnums {
     public static final String PARTNER_COUNTRY = "partner_country";
     public static final String PARTNER_REPRESENTATIVE_FIRSTNAME = "partner_representative_firstname";
     public static final String PARTNER_REPRESENTATIVE_SURENAME = "partner_representative_surname";
-    public static final String PARTNER_REPRESENTATIVE_FUNCTION= "representative_function";
+    public static final String PARTNER_REPRESENTATIVE_FUNCTION= "partner_representative_function";
     public static final String PARTNER_ORGANISATION_NAME= "partner_organisation_name";
     public static final String PARTNER_ORGANISATION_ACRONOMY= "partner_organisation_acronomy";
     public static final String PARTNER_LEGAL_SATUS= "partner_legal_status";
