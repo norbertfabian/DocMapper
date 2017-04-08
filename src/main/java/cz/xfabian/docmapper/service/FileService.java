@@ -14,4 +14,6 @@ public interface FileService {
      * @return List of all file names
      */
     List<String> listAllFiles(String dir);
+
+    void delete(String docName);
 }

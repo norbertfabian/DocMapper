@@ -79,9 +79,6 @@
             </table>
 
             <div class="row pull-right">
-                <div class="col-lg-8">
-                    <b>Generate pdf:</b> <form:checkbox path="generatePdf"/>
-                </div>
                 <div class="col-lg-4">
                     <button class="btn btn-primary " type="submit">Fill template</button>
                 </div>

@@ -53,9 +53,7 @@ public class DocxFillerFacadeImpl implements DocxFillerFacade {
             String outputFile = createOutputName(order + 1, values, variables.get(order));
             docxService.fillTemplate(FilePathEnums.TEMPLATES_DIR + "/" + values.getTemplate(),
                     outputFile, variables.get(order));
-            if(values.getGeneratePdf()) {
-                pdfService.docxToPdf(outputFile);
-            }
+            pdfService.docxToPdf(outputFile);
         }
     }
 

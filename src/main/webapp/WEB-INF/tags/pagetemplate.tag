@@ -45,6 +45,12 @@
             </div>
             <div class="collapse navbar-collapse">
                 <ul class="navbar-nav nav navbar-right">
+                    <li>
+                        <a href="${pageContext.request.contextPath}" >Generate</a>
+                    </li>
+                    <li>
+                        <a href="${pageContext.request.contextPath}/documents" >Documents</a>
+                    </li>
                     Created by Norbert Fabian in 2016
                 </ul>
             </div>
