@@ -51,7 +51,6 @@
                     <li>
                         <a href="${pageContext.request.contextPath}/documents" >Documents</a>
                     </li>
-                    Created by Norbert Fabian in 2016
                 </ul>
             </div>
         </div>
