@@ -13,6 +13,13 @@
 <t:pagetemplate pageTitle="Documents">
     <jsp:attribute name="content">
             <h1>Documents</h1>
+
+            <a href="${pageContext.request.contextPath}/documents/merge" class="btn btn-primary">
+                Create mergeded pdf
+            </a>
+            <a href="${pageContext.request.contextPath}/documents/deleteall" class="btn btn-primary">
+                Delete all documents
+            </a>
     <table class="table">
         <thead>
         <tr>
@@ -37,12 +44,6 @@
                 </tr>
             </c:forEach>
         </tbody>
-        <a href="${pageContext.request.contextPath}/documents/merge" class="btn btn-primary">
-            Create mergeded pdf
-        </a>
-        <a href="${pageContext.request.contextPath}/documents/deleteall" class="btn btn-primary">
-            Delete all documents
-        </a>
     </table>
     </jsp:attribute>
 </t:pagetemplate>
