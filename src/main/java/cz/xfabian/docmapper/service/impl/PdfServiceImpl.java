@@ -4,11 +4,16 @@ import com.documents4j.api.DocumentType;
 import com.documents4j.api.IConverter;
 import com.documents4j.job.LocalConverter;
 import cz.xfabian.docmapper.enums.FilePathEnums;
+import cz.xfabian.docmapper.service.FileService;
 import cz.xfabian.docmapper.service.PdfService;
+import org.apache.pdfbox.multipdf.PDFMergerUtility;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.List;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 
@@ -18,6 +23,9 @@ import java.util.concurrent.TimeUnit;
 
 @Service
 public class PdfServiceImpl implements PdfService {
+
+    @Autowired
+    private FileService fileService;
 
     public void docxToPdf(String fileName) throws FileNotFoundException {
         File input = new File(FilePathEnums.OUTPUT_DOCX + fileName + ".docx");
@@ -32,5 +40,16 @@ public class PdfServiceImpl implements PdfService {
                 .to(output).as(DocumentType.PDF)
                 .prioritizeWith(1000)
                 .schedule();
+    }
+
+    @Override
+    public void mergePdf() throws IOException {
+        PDFMergerUtility ut = new PDFMergerUtility();
+        List<String> files = fileService.listAllFiles(FilePathEnums.OUTPUT_PDF);
+        for (String pdf: files) {
+            ut.addSource(new File(FilePathEnums.OUTPUT_PDF + pdf));
+        }
+        ut.setDestinationFileName(FilePathEnums.OUTPUT_PDF + "MergedFile.pdf");
+        ut.mergeDocuments(null);
     }
 }

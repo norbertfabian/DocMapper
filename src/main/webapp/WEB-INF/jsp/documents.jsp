@@ -18,7 +18,6 @@
         <tr>
             <th>Document</th>
             <th>PDF</th>
-            <th>DOCX</th>
         </tr>
         </thead>
         <tbody>
@@ -27,12 +26,7 @@
                     <td class="vertical-align"><c:out value="${name}"/></td>
                     <td>
                         <a href="${pageContext.request.contextPath}/documents/pdf/${name}" class="btn btn-primary">
-                            Download as PDF
-                        </a>
-                    </td>
-                    <td>
-                        <a href="${pageContext.request.contextPath}/documents/docx/${name}" class="btn btn-primary">
-                            Download as DOCX
+                            PDF
                         </a>
                     </td>
                     <td>
@@ -43,6 +37,12 @@
                 </tr>
             </c:forEach>
         </tbody>
+        <a href="${pageContext.request.contextPath}/documents/merge" class="btn btn-primary">
+            Create mergeded pdf
+        </a>
+        <a href="${pageContext.request.contextPath}/documents/deleteall" class="btn btn-primary">
+            Delete all documents
+        </a>
     </table>
     </jsp:attribute>
 </t:pagetemplate>

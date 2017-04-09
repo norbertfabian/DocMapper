@@ -74,8 +74,7 @@ public class DocxFillerFacadeImpl implements DocxFillerFacade {
 
     private String createOutputName(int order, OrganizationsInfoDto dto, Map<String, String> vars) {
         return dto.getProjectAcronym() + "_" + String.format("%02d", order) + "_"
-                + vars.get(VariableEnums.PARTNER_COUNTRY) + "_"
-                + vars.get(VariableEnums.PARTNER_ORGANISATION_NAME);
+                + vars.get(VariableEnums.PARTNER_COUNTRY);
     }
 
     private String getFormattedCurrentDate() {
