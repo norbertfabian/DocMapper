@@ -63,7 +63,8 @@ public class XlsxServiceImpl implements XlsxService {
                             .setAddress(getNextCellValue(cellIterator))
                             .setZip(getNextCellValue(cellIterator))
                             .setCity(getNextCellValue(cellIterator))
-                            .setVat(getNextCellValue(cellIterator)));
+                            .setVat(getNextCellValue(cellIterator))
+                            .setEmail(getNextCellValue(cellIterator)));
 
         }
         return partners;

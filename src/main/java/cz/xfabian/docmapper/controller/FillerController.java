@@ -42,8 +42,8 @@ public class FillerController {
     @RequestMapping(value = "/process", method = RequestMethod.POST)
     public String process(@ModelAttribute("values") OrganizationsInfoDto values,
                           UriComponentsBuilder uriBuilder) throws IOException {
-        docxFillerFacade.FillData(values);
-        return  "redirect:" + uriBuilder.path("/documents").toUriString();
+        String emails = docxFillerFacade.FillData(values);
+        return  "redirect:" + uriBuilder.path("/documents?emails=" + emails).toUriString();
     }
 
     @ModelAttribute("partners")

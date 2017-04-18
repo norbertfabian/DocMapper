@@ -3,7 +3,6 @@ package cz.xfabian.docmapper.controller;
 import cz.xfabian.docmapper.facade.DocumentFacade;
 import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.FileSystemResource;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
@@ -12,9 +11,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
 
 /**
  * @author Norbert Fabian
@@ -26,7 +28,8 @@ public class DocumentController {
     private DocumentFacade documentFacade;
 
     @RequestMapping(method = RequestMethod.GET)
-    public String getDocuments(Model model) {
+    public String getDocuments(@RequestParam("emails") String emails, Model model) {
+        model.addAttribute("emails", emails);
         model.addAttribute("documents", documentFacade.getDocuments());
         return "documents";
     }

@@ -39,7 +39,7 @@ public class DocxFillerFacadeImpl implements DocxFillerFacade {
     private PdfService pdfService;
 
     @Override
-    public void FillData(OrganizationsInfoDto values) throws IOException {
+    public String FillData(OrganizationsInfoDto values) throws IOException {
         List<Partner> partners = new ArrayList();
         List<Partner> allPartners = xlsxService.readOrganizations(FilePathEnums.PARTNERS);
 
@@ -55,6 +55,7 @@ public class DocxFillerFacadeImpl implements DocxFillerFacade {
                     outputFile, variables.get(order));
             pdfService.docxToPdf(outputFile);
         }
+        return getEmails(partners);
     }
 
     @Override
@@ -70,6 +71,13 @@ public class DocxFillerFacadeImpl implements DocxFillerFacade {
             vars.put(VariableEnums.SIGNATURE_DATE, signDate);
         }
         return variablesList;
+    }
+    
+    private String getEmails(List<Partner> partners) {
+        StringBuilder stringBuilder = new StringBuilder();
+        partners.stream().forEach(p -> stringBuilder.append(p.getEmail() + "; "));
+        stringBuilder.setLength(stringBuilder.length() - 2);
+        return stringBuilder.toString();
     }
 
     private String createOutputName(int order, OrganizationsInfoDto dto, Map<String, String> vars) {

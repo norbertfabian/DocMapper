@@ -23,6 +23,7 @@ public class VariableEnums {
     public static final String PARTNER_LEGAL_SATUS= "partner_legal_status";
     public static final String PARTNER_REGISTRATION_NO = "partner_registration_no";
     public static final String PARTNER_ADDRESS = "partner_address";
+    public static final String PARTNER_EMAIL = "partner_email";
     public static final String PARTNER_ZIP = "partner_zip";
     public static final String PARTNER_CITY = "partner_city";
     public static final String PARTNER_VAT = "partner_vat";

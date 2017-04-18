@@ -13,6 +13,7 @@
 <t:pagetemplate pageTitle="Documents">
     <jsp:attribute name="content">
             <h1>Documents</h1>
+            <c:if test="${not empty emails}" >Email addresses: ${emails}</c:if>
 
             <a href="${pageContext.request.contextPath}/documents/merge" class="btn btn-primary">
                 Create mergeded pdf

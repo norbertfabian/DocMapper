@@ -18,6 +18,7 @@ public class Partner {
     private String registrationNumber;
     private String representativeFunction;
     private String zip;
+    private String email;
 
 
     public String getPic() {
@@ -134,6 +135,15 @@ public class Partner {
 
     public Partner setZip(String zip) {
         this.zip = zip;
+        return this;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public Partner setEmail(String email) {
+        this.email = email;
         return this;
     }
 

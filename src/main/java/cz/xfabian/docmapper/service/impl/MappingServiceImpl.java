@@ -41,6 +41,7 @@ public class MappingServiceImpl implements MappingService {
         map.put(VariableEnums.PARTNER_ORGANISATION_NAME, getValueOrEmpty(partner.getName()));
         map.put(VariableEnums.PARTNER_VAT, getValueOrEmpty(partner.getVat()));
         map.put(VariableEnums.PARTNER_ZIP, getValueOrEmpty(partner.getZip()));
+        map.put(VariableEnums.PARTNER_EMAIL, getValueOrEmpty(partner.getEmail()));
         return map;
     }
 

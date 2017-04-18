@@ -10,7 +10,7 @@ import java.util.List;
  */
 public interface DocxFillerFacade {
 
-    void FillData(OrganizationsInfoDto values) throws IOException;
+    String FillData(OrganizationsInfoDto values) throws IOException;
 
-    public List<String> getTemplates();
+    List<String> getTemplates();
 }
