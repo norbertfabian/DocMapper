@@ -36,11 +36,6 @@ public class DocumentFacadeImpl implements DocumentFacade {
     }
 
     @Override
-    public void mergePdfs() throws IOException {
-        pdfService.mergePdf();
-    }
-
-    @Override
     public String getDocumentLocation(String docName) {
         String prefix = "";
         if(docName.endsWith(".pdf"))

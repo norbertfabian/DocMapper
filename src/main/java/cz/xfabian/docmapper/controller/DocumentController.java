@@ -8,10 +8,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.io.File;
@@ -28,7 +25,8 @@ public class DocumentController {
     private DocumentFacade documentFacade;
 
     @RequestMapping(method = RequestMethod.GET)
-    public String getDocuments(@RequestParam("emails") String emails, Model model) {
+    public String getDocuments(@ModelAttribute("emails") String emails,
+                               Model model) {
         model.addAttribute("emails", emails);
         model.addAttribute("documents", documentFacade.getDocuments());
         return "documents";
@@ -49,12 +47,6 @@ public class DocumentController {
         header.setContentLength(document.length);
         fileInputStream.close();
         return new HttpEntity<>(document, header);
-    }
-
-    @RequestMapping(value = "/documents/merge", method = RequestMethod.GET)
-    public String mergedPdf(UriComponentsBuilder uriBuilder) throws IOException {
-        documentFacade.mergePdfs();
-        return "redirect:" + uriBuilder.path("/documents").toUriString();
     }
 
     @RequestMapping(value = "/documents/delete/{fileName}", method = RequestMethod.GET)

@@ -43,13 +43,13 @@ public class PdfServiceImpl implements PdfService {
     }
 
     @Override
-    public void mergePdf() throws IOException {
+    public void mergePdf(String acronym) throws IOException {
         PDFMergerUtility ut = new PDFMergerUtility();
         List<String> files = fileService.listAllFiles(FilePathEnums.OUTPUT_PDF);
         for (String pdf: files) {
             ut.addSource(new File(FilePathEnums.OUTPUT_PDF + pdf));
         }
-        ut.setDestinationFileName(FilePathEnums.OUTPUT_PDF + "MergedFile.pdf");
+        ut.setDestinationFileName(FilePathEnums.OUTPUT_PDF + acronym + "-mandates.pdf");
         ut.mergeDocuments(null);
     }
 }

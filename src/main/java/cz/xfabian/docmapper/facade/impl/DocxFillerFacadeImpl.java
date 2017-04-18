@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Created by Norbert Fabian on 26.12.2016.
@@ -55,6 +56,12 @@ public class DocxFillerFacadeImpl implements DocxFillerFacade {
                     outputFile, variables.get(order));
             pdfService.docxToPdf(outputFile);
         }
+        try {
+            TimeUnit.SECONDS.sleep(3);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        pdfService.mergePdf(values.getProjectAcronym());
         return getEmails(partners);
     }
 

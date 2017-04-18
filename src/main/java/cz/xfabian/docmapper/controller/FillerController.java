@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.io.IOException;
@@ -41,9 +42,11 @@ public class FillerController {
 
     @RequestMapping(value = "/process", method = RequestMethod.POST)
     public String process(@ModelAttribute("values") OrganizationsInfoDto values,
+                          RedirectAttributes redirectAttributes,
                           UriComponentsBuilder uriBuilder) throws IOException {
         String emails = docxFillerFacade.FillData(values);
-        return  "redirect:" + uriBuilder.path("/documents?emails=" + emails).toUriString();
+        redirectAttributes.addFlashAttribute("emails", emails);
+        return  "redirect:" + uriBuilder.path("/documents").toUriString();
     }
 
     @ModelAttribute("partners")

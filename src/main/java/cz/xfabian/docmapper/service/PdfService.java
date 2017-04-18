@@ -10,5 +10,5 @@ public interface PdfService {
 
     void docxToPdf(String fileName) throws FileNotFoundException;
 
-    void mergePdf() throws IOException;
+    void mergePdf(String acronym) throws IOException;
 }

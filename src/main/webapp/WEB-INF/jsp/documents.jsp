@@ -13,11 +13,10 @@
 <t:pagetemplate pageTitle="Documents">
     <jsp:attribute name="content">
             <h1>Documents</h1>
-            <c:if test="${not empty emails}" >Email addresses: ${emails}</c:if>
+            <div>
+                <c:if test="${not empty emails}" >Email addresses: ${emails}</c:if> </br>
+            </div>
 
-            <a href="${pageContext.request.contextPath}/documents/merge" class="btn btn-primary">
-                Create mergeded pdf
-            </a>
             <a href="${pageContext.request.contextPath}/documents/deleteall" class="btn btn-primary">
                 Delete all documents
             </a>
