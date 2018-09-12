@@ -5,9 +5,11 @@ package cz.xfabian.docmapper.enums;
  */
 public class FilePathEnums {
 
-    public static final String PARTNERS = "data/Partners.xlsx";
-    public static final String TEMPLATES_DIR = "template";
-    public static final String OUTPUT_DIR = "output/";
+    public static final String PREFIX = "";
+
+    public static final String PARTNERS = PREFIX + "data/Partners.xlsx";
+    public static final String TEMPLATES_DIR = PREFIX + "template";
+    public static final String OUTPUT_DIR = PREFIX + "output/";
     public static final String OUTPUT_DOCX = OUTPUT_DIR + "docx/";
     public static final String OUTPUT_PDF = OUTPUT_DIR + "pdf/";
 }
