@@ -5,6 +5,7 @@ import cz.xfabian.docmapper.entity.Partner;
 import cz.xfabian.docmapper.enums.FilePathEnums;
 import cz.xfabian.docmapper.facade.DocxFillerFacade;
 import cz.xfabian.docmapper.service.FileService;
+import cz.xfabian.docmapper.service.PartnerService;
 import cz.xfabian.docmapper.service.XlsxService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -29,10 +30,7 @@ public class FillerController {
     private DocxFillerFacade docxFillerFacade;
 
     @Autowired
-    private XlsxService xlsxService;
-
-    @Autowired
-    private FileService fileService;
+    private PartnerService partnerService;
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String getPage(Model model) throws IOException {
@@ -51,7 +49,7 @@ public class FillerController {
 
     @ModelAttribute("partners")
     public List<Partner> partners() throws IOException {
-        return xlsxService.readOrganizations(FilePathEnums.PARTNERS);
+        return partnerService.getPartners();
     }
 
     @ModelAttribute("templates")

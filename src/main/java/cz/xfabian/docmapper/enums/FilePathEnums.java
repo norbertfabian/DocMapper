@@ -7,7 +7,7 @@ public class FilePathEnums {
 
     public static final String PREFIX = "";
 
-    public static final String PARTNERS = PREFIX + "data/Partners.xlsx";
+    public static final String PARTNERS = PREFIX + "data/";
     public static final String TEMPLATES_DIR = PREFIX + "template";
     public static final String OUTPUT_DIR = PREFIX + "output/";
     public static final String OUTPUT_DOCX = OUTPUT_DIR + "docx/";

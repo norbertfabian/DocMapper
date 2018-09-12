@@ -19,6 +19,10 @@ public class Partner {
     private String representativeFunction;
     private String zip;
     private String email;
+    private String phone;
+    private String description;
+    private String activities;
+    private String representativeGender;
 
 
     public String getPic() {
@@ -144,6 +148,42 @@ public class Partner {
 
     public Partner setEmail(String email) {
         this.email = email;
+        return this;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public Partner setPhone(String phone) {
+        this.phone = phone;
+        return this;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public Partner setDescription(String description) {
+        this.description = description;
+        return this;
+    }
+
+    public String getActivities() {
+        return activities;
+    }
+
+    public Partner setActivities(String activities) {
+        this.activities = activities;
+        return this;
+    }
+
+    public String getRepresentativeGender() {
+        return representativeGender;
+    }
+
+    public Partner setRepresentativeGender(String representativeGender) {
+        this.representativeGender = representativeGender;
         return this;
     }
 

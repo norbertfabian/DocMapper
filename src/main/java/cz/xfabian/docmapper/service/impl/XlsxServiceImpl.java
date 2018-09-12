@@ -51,21 +51,24 @@ public class XlsxServiceImpl implements XlsxService {
             Row row = rowIterator.next();
             Iterator<Cell> cellIterator = row.cellIterator();
             partners.add(
-                    new Partner().setPic(getNextCellValue(cellIterator))
+                    new Partner()
+                            .setPic(getNextCellValue(cellIterator))
+                            .setName(getNextCellValue(cellIterator))
+                            .setAcronomy(getNextCellValue(cellIterator))
                             .setCountry(getNextCellValue(cellIterator))
                             .setRepresentativeFirstName(getNextCellValue(cellIterator))
                             .setRepresentativeSurname(getNextCellValue(cellIterator))
+                            .setRepresentativeGender(getNextCellValue(cellIterator))
                             .setRepresentativeFunction(getNextCellValue(cellIterator))
-                            .setName(getNextCellValue(cellIterator))
-                            .setAcronomy(getNextCellValue(cellIterator))
                             .setLegalStatus(getNextCellValue(cellIterator))
                             .setRegistrationNumber(getNextCellValue(cellIterator))
                             .setAddress(getNextCellValue(cellIterator))
                             .setZip(getNextCellValue(cellIterator))
                             .setCity(getNextCellValue(cellIterator))
                             .setVat(getNextCellValue(cellIterator))
-                            .setEmail(getNextCellValue(cellIterator)));
-
+                            .setEmail(getNextCellValue(cellIterator))
+                            .setPhone(getNextCellValue(cellIterator))
+            );
         }
         return partners;
     }

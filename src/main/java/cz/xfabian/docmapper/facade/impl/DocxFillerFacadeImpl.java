@@ -35,7 +35,7 @@ public class DocxFillerFacadeImpl implements DocxFillerFacade {
     private MappingService mappingService;
 
     @Autowired
-    private XlsxService xlsxService;
+    private PartnerService partnerService;
 
     @Autowired
     private FileService fileService;
@@ -47,7 +47,7 @@ public class DocxFillerFacadeImpl implements DocxFillerFacade {
     public String FillData(OrganizationsInfoDto values) throws IOException {
 		documentFacade.deleteAll();
         List<Partner> partners = new ArrayList();
-        List<Partner> allPartners = xlsxService.readOrganizations(FilePathEnums.PARTNERS);
+        List<Partner> allPartners = partnerService.getPartners();
 
         for(String pic: values.getPics()) {
             allPartners.stream().filter(p -> p.getPic().equals(pic)).forEach(partners::add);

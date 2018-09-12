@@ -14,7 +14,9 @@ public class VariableEnums {
      * PARTNERS
      */
     public static final String PARTNER_PIC = "pic";
+    public static final String PARTNER_ACTIVITIES = "partner_activities";
     public static final String PARTNER_COUNTRY = "partner_country";
+    public static final String PARTNER_DESCRIPTION = "partner_description";
     public static final String PARTNER_REPRESENTATIVE_FIRSTNAME = "partner_representative_firstname";
     public static final String PARTNER_REPRESENTATIVE_SURENAME = "partner_representative_surname";
     public static final String PARTNER_REPRESENTATIVE_FUNCTION= "partner_representative_function";
@@ -24,6 +26,7 @@ public class VariableEnums {
     public static final String PARTNER_REGISTRATION_NO = "partner_registration_no";
     public static final String PARTNER_ADDRESS = "partner_address";
     public static final String PARTNER_EMAIL = "partner_email";
+    public static final String PARTNER_PHONE = "partner_phone";
     public static final String PARTNER_ZIP = "partner_zip";
     public static final String PARTNER_CITY = "partner_city";
     public static final String PARTNER_VAT = "partner_vat";
