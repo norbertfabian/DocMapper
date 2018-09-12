@@ -5,6 +5,7 @@ import cz.xfabian.docmapper.entity.Partner;
 import cz.xfabian.docmapper.enums.FilePathEnums;
 import cz.xfabian.docmapper.enums.VariableEnums;
 import cz.xfabian.docmapper.facade.DocxFillerFacade;
+import cz.xfabian.docmapper.facade.DocumentFacade;
 import cz.xfabian.docmapper.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,6 +24,9 @@ import java.util.concurrent.TimeUnit;
 
 @Service
 public class DocxFillerFacadeImpl implements DocxFillerFacade {
+	
+	@Autowired
+	private DocumentFacade documentFacade;
 
     @Autowired
     private DocxService docxService;
@@ -41,6 +45,7 @@ public class DocxFillerFacadeImpl implements DocxFillerFacade {
 
     @Override
     public String FillData(OrganizationsInfoDto values) throws IOException {
+		documentFacade.deleteAll();
         List<Partner> partners = new ArrayList();
         List<Partner> allPartners = xlsxService.readOrganizations(FilePathEnums.PARTNERS);
 
