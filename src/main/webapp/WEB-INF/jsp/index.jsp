@@ -63,9 +63,9 @@
                 <!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
                 <!-- CHANGE END INDEX TO CHANGE THE AMOUNT OF PARTNERS -->
                 <!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
-                <c:forEach begin="0" end="10" varStatus="partnerIndex">
+                <c:forEach begin="0" end="9" varStatus="partnerIndex">
                     <tr>
-                        <td>Partner ${partnerIndex.index}:</td>
+                        <td>Partner ${partnerIndex.index + 1}:</td>
                         <td>
                             <form:select path="pics[${partnerIndex.index}]" cssClass="col-xs-6 form-control">
                                 <form:option value=""/>

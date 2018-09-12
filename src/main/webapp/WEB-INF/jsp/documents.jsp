@@ -14,7 +14,7 @@
     <jsp:attribute name="content">
             <h1>Documents</h1>
             <div>
-                <c:if test="${not empty emails}" >Email addresses: ${emails}</c:if> </br>
+                <c:if test="${not empty emails}" >${emails}</c:if> </br>
             </div>
 
             <a href="${pageContext.request.contextPath}/documents/deleteall" class="btn btn-primary">
